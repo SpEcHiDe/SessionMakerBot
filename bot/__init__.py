@@ -45,8 +45,7 @@ COMMM_AND_PRE_FIX = get_config("COMMM_AND_PRE_FIX", "/")
 START_COMMAND = get_config("START_COMMAND", "start")
 # path to store LOG files
 LOG_FILE_ZZGEVC = get_config("LOG_FILE_ZZGEVC", "SessionMakerBot.log")
-# a dictionary to store the currently running processes
-AKTIFPERINTAH = {}
+
 
 logging.basicConfig(
     level=logging.INFO,
@@ -69,6 +68,16 @@ def LOGGER(name: str) -> logging.Logger:
     return logging.getLogger(name)
 
 
+# a dictionary to store the currently running processes
+AKTIFPERINTAH = {}
+# a dictionary to store the human frinedly names
+# of different sent_code types
+AVAILABLE_CODE_RECVING_OPTIONS = {
+    "app": "Telegram app",
+    "sms": "SMS",
+    "call": "Phone Call",
+    "flash_call": "Phone Flash Call"
+}
 # /start message when other users start your bot
 START_OTHER_USERS_TEXT = get_config(
     "START_OTHER_USERS_TEXT",
@@ -96,6 +105,9 @@ ALREADY_REGISTERED_PHONE = get_config("ALREADY_REGISTERED_PHONE", (
     "from <a href='tg://user?id=777000'>Telegram</a> "
     "seperated by space, "
     "else a PhoneCodeInvalidError would be raised."
+))
+CONFIRM_SENT_VIA = get_config("CONFIRM_SENT_VIA", (
+    "The confirmation code has been sent via {}"
 ))
 RECVD_PHONE_CODE = get_config("RECVD_PHONE_CODE", (
     "checking received phone code \n\n"

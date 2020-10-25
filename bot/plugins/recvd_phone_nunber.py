@@ -25,6 +25,8 @@ from pyrogram.types import (
 from bot import (
     AKTIFPERINTAH,
     ALREADY_REGISTERED_PHONE,
+    AVAILABLE_CODE_RECVING_OPTIONS,
+    CONFIRM_SENT_VIA,
     RECVD_PHONE_NUMBER_DBP
 )
 from bot.user import User
@@ -55,13 +57,8 @@ async def recvd_ph_no_message(_, message: Message):
     )
     w_s_dict["USER_CLIENT"] = loical_ci
     status_message = await status_message.edit_text(
-        ALREADY_REGISTERED_PHONE + "\n\nThe confirmation code has been sent via {}".format(
-            {
-                "app": "Telegram app",
-                "sms": "SMS",
-                "call": "phone call",
-                "flash_call": "phone flash call"
-            }[w_s_dict["SENT_CODE_R"].type]
+        ALREADY_REGISTERED_PHONE + "\n\n" + CONFIRM_SENT_VIA.format(
+            AVAILABLE_CODE_RECVING_OPTIONS[w_s_dict["SENT_CODE_R"].type]
         )
     )
     w_s_dict["MESSAGE"] = status_message

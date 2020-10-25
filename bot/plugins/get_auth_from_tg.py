@@ -69,7 +69,7 @@ async def recv_tg_code_message(_, message: Message):
             e.MESSAGE + "\n\n" + PHONE_CODE_IN_VALID_ERR_TEXT
         )
         del AKTIFPERINTAH[message.chat.id]
-    except SessionPasswordNeeded as e:
+    except SessionPasswordNeeded:
         await status_message.edit_text(
             ACC_PROK_WITH_TFA
         )
