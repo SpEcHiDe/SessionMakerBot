@@ -29,7 +29,9 @@ from pyrogram.errors import (
 from bot import (
     ACC_PROK_WITH_TFA,
     AKTIFPERINTAH,
-    RECVD_PHONE_CODE
+    PHONE_CODE_IN_VALID_ERR_TEXT,
+    RECVD_PHONE_CODE,
+    SESSION_GENERATED_USING
 )
 
 
@@ -47,11 +49,13 @@ async def recv_tg_code_message(_, message: Message):
     loical_ci = w_s_dict.get("USER_CLIENT")
     if not sent_code or not phone_number:
         return
-    await w_s_dict.get("MESSAGE").delete()
+    status_message = w_s_dict.get("MESSAGE")
+    if not status_message:
+        return
+    # await status_message.delete()
     del w_s_dict["MESSAGE"]
     status_message = await message.reply_text(
-        RECVD_PHONE_CODE,
-        quote=True
+        RECVD_PHONE_CODE
     )
     phone_code = "".join(message.text.split(" "))
     try:
@@ -61,12 +65,24 @@ async def recv_tg_code_message(_, message: Message):
             phone_code
         )
     except BadRequest as e:
-        await status_message.edit_text(e.MESSAGE)
+        await status_message.edit_text(
+            e.MESSAGE + "\n\n" + PHONE_CODE_IN_VALID_ERR_TEXT
+        )
         del AKTIFPERINTAH[message.chat.id]
     except SessionPasswordNeeded as e:
-        print(e.MESSAGE)
         await status_message.edit_text(
             ACC_PROK_WITH_TFA
         )
-    w_s_dict["MESSAGE"] = status_message
+        w_s_dict["IS_NEEDED_TFA"] = True
+    else:
+        saved_message_ = await status_message.edit_text(
+            "<code>" + str(await loical_ci.export_session_string()) + "</code>"
+        )
+        await saved_message_.reply_text(
+            SESSION_GENERATED_USING,
+            quote=True
+        )
+        del AKTIFPERINTAH[message.chat.id]
+        return False
     AKTIFPERINTAH[message.chat.id] = w_s_dict
+    raise message.stop_propagation()

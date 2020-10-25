@@ -38,7 +38,7 @@ from bot import (
 async def num_start_message(_, message: Message):
     AKTIFPERINTAH[message.chat.id] = {}
     status_message = await message.reply_text(
-        START_OTHER_USERS_TEXT + "\n" + INPUT_PHONE_NUMBER,
-        quote=True
+        START_OTHER_USERS_TEXT + "\n" + INPUT_PHONE_NUMBER
     )
     AKTIFPERINTAH[message.chat.id]["START"] = status_message
+    raise message.stop_propagation()

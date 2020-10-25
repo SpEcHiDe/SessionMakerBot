@@ -76,7 +76,7 @@ START_OTHER_USERS_TEXT = get_config(
         "Hi. ☺️\n"
         "Thank you for using me 😬\n\n"
         "This is an Open Source Project available on "
-        "https://github.com/SpEcHIDe/SessionMakerBot\n\n\n"
+        "https://github.com/SpEcHIDe/SessionMakerBot\n"
         "ℹ️ Subscribe @SpEcHlDe if you 😍 using this bot❗️❣️"
     )
 )
@@ -87,7 +87,7 @@ RECVD_PHONE_NUMBER_DBP = (
     "checking received phone number \n\n"
     ">> the Process Takes a Long Time,\n"
     ">>> Please be Patient,\n\n"
-    "<b>Never Submit Again</b>"
+    "<b>Never Submit Again</b> \n"
     "<b><i><u>It'll ruin the System</u></i></b>"
 )
 ALREADY_REGISTERED_PHONE = (
@@ -101,7 +101,7 @@ RECVD_PHONE_CODE = (
     "checking received phone code \n\n"
     ">> the Process Takes a Long Time,\n"
     ">>> Please be Patient,\n\n"
-    "<b>Never Submit Again</b>"
+    "<b>Never Submit Again</b> \n"
     "<b><i><u>It'll ruin the System</u></i></b>"
 )
 NOT_REGISTERED_PHONE = (
@@ -109,13 +109,16 @@ NOT_REGISTERED_PHONE = (
     "Please check your #karma by reading https://t.me/c/1220993104/28753"
 )
 PHONE_CODE_IN_VALID_ERR_TEXT = "Invalid Code Received. Please re /start"
+TFA_CODE_IN_VALID_ERR_TEXT = "Invalid Two Factor Code Received. Please re /start"
 ACC_PROK_WITH_TFA = (
     "The entered Telegram Number is protected with 2FA. "
     "Please enter your second factor authentication code.\n"
-    "__This message will only be used for generating your "
+    "<i>This message will only be used for generating your "
     "string session, and will never be used for any other purposes "
-    "than for which it is asked.__\n\n"
-    ""
+    "than for which it is asked.</i>\n\n"
+    "It is recommended to use "
+    "https://github.com/SpEcHIDe/SessionMakerBot and not "
+    "use this hosted version"
 )
 SESSION_GENERATED_USING = (
     "Thank you for using me 😬\n\n"

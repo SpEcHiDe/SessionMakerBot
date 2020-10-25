@@ -20,12 +20,11 @@ from pyrogram import (
     Client,
     __version__
 )
-from . import (
+from bot import (
     API_HASH,
     APP_ID,
     LOGGER,
-    TG_BOT_WORKERS,
-    TG_USER_SESSION
+    TG_BOT_WORKERS
 )
 
 

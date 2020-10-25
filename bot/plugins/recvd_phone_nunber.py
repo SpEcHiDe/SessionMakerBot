@@ -39,23 +39,23 @@ async def recvd_ph_no_message(_, message: Message):
     w_s_dict = AKTIFPERINTAH.get(message.chat.id)
     if not w_s_dict:
         return
-    await w_s_dict.get("START").delete()
+    status_message = w_s_dict.get("START")
+    if not status_message:
+        return
+    # await w_s_dict.get("START").delete()
     del w_s_dict["START"]
     status_message = await message.reply_text(
-        RECVD_PHONE_NUMBER_DBP,
-        quote=True
+        RECVD_PHONE_NUMBER_DBP
     )
     loical_ci = User()
     w_s_dict["PHONE_NUMBER"] = message.text
+    await loical_ci.connect()
     w_s_dict["SENT_CODE_R"] = await loical_ci.send_code(
         w_s_dict["PHONE_NUMBER"]
     )
     w_s_dict["USER_CLIENT"] = loical_ci
     status_message = await status_message.edit_text(
-        (
-            ALREADY_REGISTERED_PHONE,
-            "\n\nThe confirmation code has been sent via {}"
-        ).format(
+        ALREADY_REGISTERED_PHONE + "\n\nThe confirmation code has been sent via {}".format(
             {
                 "app": "Telegram app",
                 "sms": "SMS",
@@ -66,3 +66,4 @@ async def recvd_ph_no_message(_, message: Message):
     )
     w_s_dict["MESSAGE"] = status_message
     AKTIFPERINTAH[message.chat.id] = w_s_dict
+    raise message.stop_propagation()
