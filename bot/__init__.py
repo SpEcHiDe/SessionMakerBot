@@ -80,37 +80,43 @@ START_OTHER_USERS_TEXT = get_config(
         "ℹ️ Subscribe @SpEcHlDe if you 😍 using this bot❗️❣️"
     )
 )
-INPUT_PHONE_NUMBER = (
+INPUT_PHONE_NUMBER = get_config("INPUT_PHONE_NUMBER", (
     "Enter the Phone Number that you want to make awesome."
-)
-RECVD_PHONE_NUMBER_DBP = (
+))
+RECVD_PHONE_NUMBER_DBP = get_config("RECVD_PHONE_NUMBER_DBP", (
     "checking received phone number \n\n"
     ">> the Process Takes a Long Time,\n"
     ">>> Please be Patient,\n\n"
     "<b>Never Submit Again</b> \n"
     "<b><i><u>It'll ruin the System</u></i></b>"
-)
-ALREADY_REGISTERED_PHONE = (
+))
+ALREADY_REGISTERED_PHONE = get_config("ALREADY_REGISTERED_PHONE", (
     "This number is registered on Telegram. "
     "Please input the verification code that you receive "
     "from <a href='tg://user?id=777000'>Telegram</a> "
     "seperated by space, "
     "else a PhoneCodeInvalidError would be raised."
-)
-RECVD_PHONE_CODE = (
+))
+RECVD_PHONE_CODE = get_config("RECVD_PHONE_CODE", (
     "checking received phone code \n\n"
     ">> the Process Takes a Long Time,\n"
     ">>> Please be Patient,\n\n"
     "<b>Never Submit Again</b> \n"
     "<b><i><u>It'll ruin the System</u></i></b>"
-)
-NOT_REGISTERED_PHONE = (
+))
+NOT_REGISTERED_PHONE = get_config("NOT_REGISTERED_PHONE", (
     "This number is not registered on Telegram. "
     "Please check your #karma by reading https://t.me/c/1220993104/28753"
+))
+PHONE_CODE_IN_VALID_ERR_TEXT = get_config(
+    "PHONE_CODE_IN_VALID_ERR_TEXT",
+    "Invalid Code Received. Please re /start"
 )
-PHONE_CODE_IN_VALID_ERR_TEXT = "Invalid Code Received. Please re /start"
-TFA_CODE_IN_VALID_ERR_TEXT = "Invalid Two Factor Code Received. Please re /start"
-ACC_PROK_WITH_TFA = (
+TFA_CODE_IN_VALID_ERR_TEXT = get_config(
+    "TFA_CODE_IN_VALID_ERR_TEXT",
+    "Invalid Two Factor Code Received. Please re /start"
+)
+ACC_PROK_WITH_TFA = get_config("ACC_PROK_WITH_TFA", (
     "The entered Telegram Number is protected with 2FA. "
     "Please enter your second factor authentication code.\n"
     "<i>This message will only be used for generating your "
@@ -119,10 +125,10 @@ ACC_PROK_WITH_TFA = (
     "It is recommended to use "
     "https://github.com/SpEcHIDe/SessionMakerBot and not "
     "use this hosted version"
-)
-SESSION_GENERATED_USING = (
+))
+SESSION_GENERATED_USING = get_config("SESSION_GENERATED_USING", (
     "Thank you for using me 😬\n\n"
     "This is an Open Source Project available on "
     "https://github.com/SpEcHIDe/SessionMakerBot\n\n\n"
     "👆👆👆 String Session successfully generated 👆👆👆"
-)
+))
