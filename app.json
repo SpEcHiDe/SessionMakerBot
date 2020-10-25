@@ -1,0 +1,34 @@
+{
+    "name": "Pyrogram String Session Generator Bot",
+    "description": "Modular  Telegram Bot powered by @PyroGram!",
+    "keywords": [
+        "telegram",
+        "bot",
+        "plugin",
+        "modular",
+        "productivity"
+    ],
+    "repository": "https://github.com/SpEcHiDe/SessionMakerBot",
+    "website": "https://telegram.dog/UniBorg",
+    "success_url": "https://t.me/UniBorg/55",
+    "env": {
+        "APP_ID": {
+            "description": "Get this value from my.telegram.org! Please do not steal"
+        },
+        "API_HASH": {
+            "description": "Get this value from my.telegram.org! Please do not steal"
+        },
+        "TG_BOT_TOKEN": {
+            "description": "Obtain a Telegram bot token by contacting @BotFather"
+        }
+    },
+    "buildpacks": [{
+        "url": "heroku/python"
+    }],
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    }
+}

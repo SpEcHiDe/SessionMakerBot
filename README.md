@@ -9,6 +9,10 @@
 -  Run the bot: `python3 -m bot`
 
 
+### Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 ## Credits, and Thanks to
 
 * [ThankTelegram](https://telegram.dog/ThankTelegram)
