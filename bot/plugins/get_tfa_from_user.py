@@ -24,21 +24,33 @@ from pyrogram.types import (
 )
 from bot import (
     AKTIFPERINTAH,
-    COMMM_AND_PRE_FIX,
-    START_COMMAND,
-    START_OTHER_USERS_TEXT,
-    INPUT_PHONE_NUMBER
+    SESSION_GENERATED_USING
 )
 
 
 @Client.on_message(
-    filters.command(START_COMMAND, COMMM_AND_PRE_FIX) &
-    filters.private
+    filters.text &
+    filters.private,
+    group=3
 )
-async def num_start_message(_, message: Message):
-    AKTIFPERINTAH[message.chat.id] = {}
-    status_message = await message.reply_text(
-        START_OTHER_USERS_TEXT + "\n" + INPUT_PHONE_NUMBER,
+async def recv_tg_tfa_message(_, message: Message):
+    w_s_dict = AKTIFPERINTAH.get(message.chat.id)
+    if not w_s_dict:
+        return
+    signed_in = w_s_dict.get("SIGNED_IN")
+    phone_number = w_s_dict.get("PHONE_NUMBER")
+    loical_ci = w_s_dict.get("USER_CLIENT")
+    if not signed_in or not phone_number:
+        return
+    await w_s_dict.get("MESSAGE").delete()
+    del w_s_dict["MESSAGE"]
+    tfa_code = message.text
+    await loical_ci.check_password(tfa_code)
+    saved_message_ = await message.reply_text(
+        str(await loical_ci.export_session_string()),
         quote=True
     )
-    AKTIFPERINTAH[message.chat.id]["START"] = status_message
+    await saved_message_.reply_text(
+        SESSION_GENERATED_USING,
+        quote=True
+    )
