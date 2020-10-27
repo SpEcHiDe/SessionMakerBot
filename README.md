@@ -7,7 +7,9 @@
 -  Install requirements in `requirements.txt`
 -  Add the required environment variables of `sample_config.env`, either by renaming to `config.env`, or in whatever way your environment supports Environment Variables.
 -  Run the bot: `python3 -m bot`
+### DEMO
 
+[DEMO](https://telegram.dog/payrogramsessionstringbot "PYAROGAM SESSION STRING")
 
 ### Heroku
 
