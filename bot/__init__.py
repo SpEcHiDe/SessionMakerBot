@@ -73,10 +73,10 @@ AKTIFPERINTAH = {}
 # a dictionary to store the human frinedly names
 # of different sent_code types
 AVAILABLE_CODE_RECVING_OPTIONS = {
-    "app": "Telegram app",
-    "sms": "SMS",
-    "call": "Phone Call",
-    "flash_call": "Phone Flash Call"
+    "APP": "Telegram app",
+    "SMS": "SMS",
+    "CALL": "Phone Call",
+    "FLASH_CALL": "Phone Flash Call"
 }
 # /start message when other users start your bot
 START_OTHER_USERS_TEXT = get_config(

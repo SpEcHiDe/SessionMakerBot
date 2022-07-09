@@ -41,6 +41,7 @@ from bot import (
     group=2
 )
 async def recv_tg_code_message(_, message: Message):
+
     w_s_dict = AKTIFPERINTAH.get(message.chat.id)
     if not w_s_dict:
         return
