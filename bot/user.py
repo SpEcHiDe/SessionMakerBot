@@ -16,9 +16,11 @@
 
 """ MtProto User """
 
+from ast import parse
 from pyrogram import (
     Client,
-    __version__
+    __version__,
+    enums
 )
 from bot import (
     API_HASH,
@@ -33,17 +35,18 @@ class User(Client):
 
     def __init__(self):
         super().__init__(
-            ":memory:",
+            name="tu",
             api_hash=API_HASH,
             api_id=APP_ID,
-            workers=TG_BOT_WORKERS
+            workers=TG_BOT_WORKERS,
+            in_memory=True,
+            parse_mode=enums.ParseMode.HTML
         )
         self.LOGGER = LOGGER
 
     async def start(self):
         await super().start()
-        usr_bot_me = await self.get_me()
-        self.set_parse_mode("html")
+        usr_bot_me = self.me
         self.LOGGER(__name__).info(
             f"@{usr_bot_me.username} based on Pyrogram v{__version__} "
         )

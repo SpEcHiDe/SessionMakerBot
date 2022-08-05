@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# (c) Shrimadhav U K
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
@@ -70,14 +69,6 @@ def LOGGER(name: str) -> logging.Logger:
 
 # a dictionary to store the currently running processes
 AKTIFPERINTAH = {}
-# a dictionary to store the human frinedly names
-# of different sent_code types
-AVAILABLE_CODE_RECVING_OPTIONS = {
-    "app": "Telegram app",
-    "sms": "SMS",
-    "call": "Phone Call",
-    "flash_call": "Phone Flash Call"
-}
 # /start message when other users start your bot
 START_OTHER_USERS_TEXT = get_config(
     "START_OTHER_USERS_TEXT",
